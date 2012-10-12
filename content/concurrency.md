@@ -5,7 +5,7 @@
 
 ![扩展表现为运行中的进程，工作多样性表现为进程类型。](/images/process-types.png)
 
-**在12-factor应用中，进程是一等公民。** 12-factor应用的进程主要借鉴于 [unix守护进程模型](http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/) 。开发人员可以运用这个模型去设计应用架构，将不同的工作分配给不同的 *进程类型* 。例如，HTTP请求可以交给web进程来处理，而常驻的后台工作则交由worker进程负责。
+**在12-factor应用中，进程是一等公民。** 12-factor应用的进程主要借鉴于 [unix进程模型](http://adam.heroku.com/past/2011/5/9/applying_the_unix_process_model_to_web_apps/) 。开发人员可以运用这个模型去设计应用架构，将不同的工作分配给不同的 *进程类型* 。例如，HTTP请求可以交给web进程来处理，而常驻的后台工作则交由worker进程负责。
 
 这并不表示应用不能通过单个进程来处理并发，如使用VM运行时的线程机制，或是由[EventMachine](http://rubyeventmachine.com/), [Twisted](http://twistedmatrix.com/trac/),  [Node.js](http://nodejs.org/) 等工具提供的异步/事件驱动模型。但是，单个VM的垂直扩展能力是有限的，所以应用必须能够扩展到多台物理机器上运行。
 
